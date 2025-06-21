@@ -102,12 +102,14 @@ This project is a Next.js application that implements user authentication and it
 ### Installation
 
 1. Clone the repository:
+
    ```bash
    git clone <repository-url>
    cd AMRR-Assignment
    ```
 
 2. Install dependencies:
+
    ```bash
    npm install
    # or
@@ -117,6 +119,7 @@ This project is a Next.js application that implements user authentication and it
    ```
 
 3. Start the development server:
+
    ```bash
    npm run dev
    # or
@@ -131,9 +134,9 @@ This project is a Next.js application that implements user authentication and it
 
 The application comes pre-loaded with a single admin account for testing:
 
-| Email             | Password   | Role  |
-|-------------------|------------|-------|
-| admin@example.com | Admin@123  | Admin |
+| Email             | Password  | Role  |
+| ----------------- | --------- | ----- |
+| admin@example.com | Admin@123 | Admin |
 
 This account is automatically created when you first run the application, allowing you to log in and test the functionality without having to create a new account.
 
@@ -146,7 +149,7 @@ These sample accounts and items are automatically created when you first run the
 1. Upon first visit, you will be directed to the login page
 2. You can either:
    - **Use the demo admin account**:
-     - Email: `admin@example.com` 
+     - Email: `admin@example.com`
      - Password: `Admin@123`
    - **Create your own account** (see below)
 3. Click "Login"

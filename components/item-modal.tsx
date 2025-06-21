@@ -1,36 +1,36 @@
-"use client"
+"use client";
 
-import type { Item } from "@/lib/types"
-import { Button } from "@/components/ui/button"
-import { Badge } from "@/components/ui/badge"
-import { ImageCarousel } from "./image-carousel"
-import { X, Mail, Loader2 } from "lucide-react"
-import { useState } from "react"
-import { Toast } from "./toast"
+import type { Item } from "@/lib/types";
+import { Button } from "@/components/ui/button";
+import { Badge } from "@/components/ui/badge";
+import { ImageCarousel } from "./image-carousel";
+import { X, Mail, Loader2 } from "lucide-react";
+import { useState } from "react";
+import { Toast } from "./toast";
 
 interface ItemModalProps {
-  item: Item
-  isOpen: boolean
-  onClose: () => void
+  item: Item;
+  isOpen: boolean;
+  onClose: () => void;
 }
 
 export function ItemModal({ item, isOpen, onClose }: ItemModalProps) {
-  const [loading, setLoading] = useState(false)
-  const [showToast, setShowToast] = useState(false)
-  
-  if (!isOpen) return null
+  const [loading, setLoading] = useState(false);
+  const [showToast, setShowToast] = useState(false);
+
+  if (!isOpen) return null;
 
   const handleEnquire = () => {
-    setLoading(true)
-    
+    setLoading(true);
+
     // Simulate sending an email with a timeout
     setTimeout(() => {
-      setLoading(false)
-      setShowToast(true)
-    }, 1500)
-  }
+      setLoading(false);
+      setShowToast(true);
+    }, 1500);
+  };
 
-  const allImages = [item.coverImage, ...item.additionalImages].filter(Boolean)
+  const allImages = [item.coverImage, ...item.additionalImages].filter(Boolean);
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-2 sm:p-4 bg-black/50 backdrop-blur-sm animate-in fade-in-0 duration-200 overflow-y-auto">
@@ -56,15 +56,24 @@ export function ItemModal({ item, isOpen, onClose }: ItemModalProps) {
 
           <div className="space-y-3 sm:space-y-4 animate-in fade-in-0 slide-in-from-bottom-2 duration-500 delay-100">
             <div>
-              <h3 className="font-medium text-gray-900 dark:text-gray-100 mb-2">Item Type</h3>
-              <Badge variant="secondary" className="bg-gradient-to-r from-blue-100 to-purple-100 text-blue-800 dark:from-blue-900 dark:to-purple-900 dark:text-blue-200">
+              <h3 className="font-medium text-gray-900 dark:text-gray-100 mb-2">
+                Item Type
+              </h3>
+              <Badge
+                variant="secondary"
+                className="bg-gradient-to-r from-blue-100 to-purple-100 text-blue-800 dark:from-blue-900 dark:to-purple-900 dark:text-blue-200"
+              >
                 {item.type}
               </Badge>
             </div>
 
             <div>
-              <h3 className="font-medium text-gray-900 dark:text-gray-100 mb-2">Description</h3>
-              <p className="text-gray-700 dark:text-gray-300 leading-relaxed text-sm sm:text-base">{item.description}</p>
+              <h3 className="font-medium text-gray-900 dark:text-gray-100 mb-2">
+                Description
+              </h3>
+              <p className="text-gray-700 dark:text-gray-300 leading-relaxed text-sm sm:text-base">
+                {item.description}
+              </p>
             </div>
 
             <div className="pt-4 animate-in fade-in-0 slide-in-from-bottom-2 duration-500 delay-200">
@@ -89,12 +98,12 @@ export function ItemModal({ item, isOpen, onClose }: ItemModalProps) {
           </div>
         </div>
       </div>
-      
-      <Toast 
-        message="Email sent successfully!" 
-        show={showToast} 
-        onClose={() => setShowToast(false)} 
+
+      <Toast
+        message="Email sent successfully!"
+        show={showToast}
+        onClose={() => setShowToast(false)}
       />
     </div>
-  )
+  );
 }

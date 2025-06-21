@@ -22,12 +22,14 @@ This project is a Next.js application that implements user authentication and it
 ## Features
 
 - **User Authentication**
+
   - User registration (signup)
   - User login
   - Protected routes
   - Session management using local storage
 
 - **Item Management**
+
   - Create new items
   - View items in a grid layout
   - View item details
@@ -100,12 +102,14 @@ This project is a Next.js application that implements user authentication and it
 ### Installation
 
 1. Clone the repository:
+
    ```bash
    git clone <repository-url>
    cd AMRR-Assignment
    ```
 
 2. Install dependencies:
+
    ```bash
    npm install
    # or
@@ -115,6 +119,7 @@ This project is a Next.js application that implements user authentication and it
    ```
 
 3. Start the development server:
+
    ```bash
    npm run dev
    # or

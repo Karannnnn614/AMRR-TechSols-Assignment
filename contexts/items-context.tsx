@@ -14,17 +14,36 @@ export function ItemsProvider({ children }: { children: React.ReactNode }) {
   // Load items from localStorage on mount and when user changes
   useEffect(() => {
     if (user) {
-      const savedItems = localStorage.getItem(`items_${user.id}`)
-      if (savedItems) {
+      // Try to load user-specific items first
+      const savedUserItems = localStorage.getItem(`items_${user.id}`)
+      if (savedUserItems) {
         try {
-          const parsedItems = JSON.parse(savedItems).map((item: any) => ({
+          const parsedItems = JSON.parse(savedUserItems).map((item: any) => ({
             ...item,
             createdAt: new Date(item.createdAt),
           }))
           setItems(parsedItems)
+          return;
         } catch (error) {
-          console.error("Error loading items from localStorage:", error)
+          console.error("Error loading user items from localStorage:", error)
         }
+      }
+      
+      // If no user-specific items, try to load global items
+      try {
+        const globalItems = localStorage.getItem('items')
+        if (globalItems) {
+          const parsedItems = JSON.parse(globalItems).map((item: any) => ({
+            ...item,
+            createdAt: new Date(item.createdAt),
+          }))
+          setItems(parsedItems)
+          
+          // Store these items as user specific now
+          localStorage.setItem(`items_${user.id}`, JSON.stringify(parsedItems))
+        }
+      } catch (error) {
+        console.error("Error loading global items from localStorage:", error)
       }
     } else {
       setItems([])

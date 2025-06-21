@@ -102,14 +102,12 @@ This project is a Next.js application that implements user authentication and it
 ### Installation
 
 1. Clone the repository:
-
    ```bash
    git clone <repository-url>
    cd AMRR-Assignment
    ```
 
 2. Install dependencies:
-
    ```bash
    npm install
    # or
@@ -119,7 +117,6 @@ This project is a Next.js application that implements user authentication and it
    ```
 
 3. Start the development server:
-
    ```bash
    npm run dev
    # or
@@ -130,25 +127,41 @@ This project is a Next.js application that implements user authentication and it
 
 4. Open [http://localhost:3000](http://localhost:3000) in your browser to see the application.
 
+### Test Account
+
+The application comes pre-loaded with a single admin account for testing:
+
+| Email             | Password   | Role  |
+|-------------------|------------|-------|
+| admin@example.com | Admin@123  | Admin |
+
+This account is automatically created when you first run the application, allowing you to log in and test the functionality without having to create a new account.
+
+These sample accounts and items are automatically created when you first run the application. You can use any of the credentials above to log in and test the functionality without having to create a new account or add items manually.
+
 ## How to Use
 
-### Step 1: Create a User Account
+### Step 1: Login to Your Account
 
 1. Upon first visit, you will be directed to the login page
-2. Click on the "Sign up" link below the login form
-3. Enter your details:
+2. You can either:
+   - **Use the demo admin account**:
+     - Email: `admin@example.com` 
+     - Password: `Admin@123`
+   - **Create your own account** (see below)
+3. Click "Login"
+4. Upon successful login, you will be redirected to the dashboard
+5. Your authentication session will be stored in local storage
+
+### Alternative Step 1: Create a New User Account
+
+1. Click on the "Sign up" link below the login form
+2. Enter your details:
    - Name
    - Email address
    - Password (must meet security requirements)
-4. Click "Sign Up" to create your account
-5. Your user data will be stored in local storage
-
-### Step 2: Login to Your Account
-
-1. Enter your email and password on the login page
-2. Click "Login"
-3. Upon successful login, you will be redirected to the dashboard
-4. Your authentication session will be stored in local storage
+3. Click "Sign Up" to create your account
+4. Your user data will be stored in local storage
 
 ### Step 3: View and Manage Items
 

@@ -3,6 +3,7 @@
 import type React from "react"
 import { createContext, useContext, useState, useEffect } from "react"
 import type { User, AuthContextType } from "@/lib/types"
+import { initDummyUsers } from "@/lib/init-dummy-data"
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined)
 
@@ -11,6 +12,11 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   const [isLoading, setIsLoading] = useState(true)
 
   useEffect(() => {
+    // Initialize dummy users for testing
+    if (typeof window !== 'undefined') {
+      initDummyUsers()
+    }
+    
     // Check for existing user session
     const savedUser = localStorage.getItem("currentUser")
     if (savedUser) {

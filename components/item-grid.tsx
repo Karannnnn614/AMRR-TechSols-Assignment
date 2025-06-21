@@ -55,48 +55,50 @@ export function ItemGrid({ onEditItem }: ItemGridProps) {
 
   return (
     <>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
         {items.map((item, index) => (
           <div
             key={item.id}
-            className="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-xl transition-all duration-300 cursor-pointer transform hover:scale-[1.02] animate-in fade-in-0 slide-in-from-bottom-4 group"
+            className="bg-white dark:bg-gray-800 rounded-xl shadow-md overflow-hidden hover:shadow-xl transition-all duration-300 cursor-pointer transform hover:scale-[1.02] animate-in fade-in-0 slide-in-from-bottom-4 group"
             style={{ animationDelay: `${index * 100}ms` }}
             onClick={() => setSelectedItem(item)}
           >
-            <div className="relative h-48 overflow-hidden">
+            <div className="relative h-40 sm:h-48 overflow-hidden">
               <Image
                 src={item.coverImage || "/placeholder.svg"}
                 alt={item.name}
                 fill
                 className="object-cover transition-transform duration-300 hover:scale-110"
               />
-              <div className="absolute top-2 right-2 flex gap-2 sm:opacity-0 sm:group-hover:opacity-100 transition-opacity duration-200">
+              <div className="absolute top-2 right-2 flex gap-2 opacity-70 sm:opacity-0 sm:group-hover:opacity-100 transition-opacity duration-200">
                 <Button
                   size="sm"
                   variant="secondary"
-                  className="h-8 w-8 p-0 bg-white/90 hover:bg-white shadow-md"
+                  className="h-7 w-7 sm:h-8 sm:w-8 p-0 bg-white/90 hover:bg-white shadow-md"
                   onClick={(e) => handleEditClick(e, item)}
+                  aria-label="Edit item"
                 >
-                  <Edit className="h-4 w-4" />
+                  <Edit className="h-3 w-3 sm:h-4 sm:w-4" />
                 </Button>
                 <Button
                   size="sm"
                   variant="destructive"
-                  className="h-8 w-8 p-0 bg-red-500/90 hover:bg-red-600 shadow-md"
+                  className="h-7 w-7 sm:h-8 sm:w-8 p-0 bg-red-500/90 hover:bg-red-600 shadow-md"
                   onClick={(e) => handleDeleteClick(e, item)}
+                  aria-label="Delete item"
                 >
-                  <Trash2 className="h-4 w-4" />
+                  <Trash2 className="h-3 w-3 sm:h-4 sm:w-4" />
                 </Button>
               </div>
             </div>
-            <div className="p-4">
+            <div className="p-3 sm:p-4">
               <div className="flex justify-between items-start mb-2">
-                <h3 className="font-semibold text-gray-900 truncate">{item.name}</h3>
-                <Badge variant="outline" className="ml-2 shrink-0">
+                <h3 className="font-semibold text-gray-900 dark:text-gray-100 truncate text-sm sm:text-base">{item.name}</h3>
+                <Badge variant="outline" className="ml-2 shrink-0 text-xs">
                   {item.type}
                 </Badge>
               </div>
-              <p className="text-gray-600 text-sm line-clamp-2">{item.description}</p>
+              <p className="text-gray-600 dark:text-gray-300 text-xs sm:text-sm line-clamp-2">{item.description}</p>
             </div>
           </div>
         ))}
